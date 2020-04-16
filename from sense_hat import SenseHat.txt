@@ -1,3 +1,5 @@
+#https://trinket.io/sense-hat
+
 from sense_hat import SenseHat
 from random import randint
 from time import sleep

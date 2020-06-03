@@ -1,0 +1,26 @@
+from sense_hat import SenseHat
+import time
+
+def truncate(n, decimals=0):
+    multiplier = 10 ** decimals
+    return int(n * multiplier) / multiplier
+    
+def HumidityColor(Hum):
+  if Hum <= 10 :
+    return (204,255,229)
+  elif Hum > 10 and Hum <=30:
+    return (0,255,255)
+  elif Hum > 30 and Hum <=50:
+    return (102,178,255)
+  elif Hum > 50 and Hum <=70:
+    return (0,0,255)
+  elif Hum > 70 and Hum <=100:
+    return (0,0,153)
+ 
+s = SenseHat()
+
+while True:
+  hum = truncate(s.get_humidity(),1)
+  temp1 = truncate(s.get_temperature(), 1)
+  s.show_message((" {} ").format(temp1), text_colour = HumidityColor(hum))
+  time.sleep(1)
